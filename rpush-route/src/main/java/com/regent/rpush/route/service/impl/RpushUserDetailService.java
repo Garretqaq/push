@@ -3,8 +3,10 @@ package com.regent.rpush.route.service.impl;
 import com.regent.rpush.route.config.SessionUtils;
 import com.regent.rpush.route.model.RpushServerRegistration;
 import com.regent.rpush.route.service.IRpushServerRegistrationService;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -31,7 +33,7 @@ public class RpushUserDetailService implements UserDetailsService {
             return null;
         }
 
-        List<GrantedAuthority> admin = AuthorityUtils.commaSeparatedStringToAuthorityList("push_message"); // 普通用户暂时只有消息推送权限
-        return new User(loginName, registration.getPassword(), admin); // 账号 密码 权限
+        List<GrantedAuthority> admin = AuthorityUtils.commaSeparatedStringToAuthorityList("admin"); // 普通用户暂时只有消息推送权限
+        return new User(loginName, registration.getPassword(), admin);// 账号 密码 权限
     }
 }

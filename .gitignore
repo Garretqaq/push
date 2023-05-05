@@ -34,3 +34,4 @@ build/
 
 ### yml ###
 /rpush-route/src/main/resources/application-dev.yml
+/rpush-scheduler/src/main/resources/application-dev.yml

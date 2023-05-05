@@ -36,7 +36,7 @@ public interface OauthClientDetailsMapper extends BaseMapper<OauthClientDetails>
             "  'all', " +
             "  'refresh_token,client_credentials', " +
             "  NULL, " +
-            "  'super-admin', " +
+            "  'super-admin, admin', " +
             "  '3600', " +
             "  NULL, " +
             "  NULL, " +

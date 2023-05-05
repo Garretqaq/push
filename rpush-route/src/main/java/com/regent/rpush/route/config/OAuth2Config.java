@@ -38,7 +38,7 @@ public class OAuth2Config extends AuthorizationServerConfigurerAdapter {
     private AuthenticationManager authenticationManager;
 
     @Resource
-    private RpushUserDetailService userDetailService;
+    private RpushUserDetailService rpushUserDetailService;
 
     @Value("${auth.jwtSigningKey}")
     private String jwtSigningKey;
@@ -83,12 +83,7 @@ public class OAuth2Config extends AuthorizationServerConfigurerAdapter {
                 .authenticationManager(authenticationManager)
                 .accessTokenConverter(accessTokenConverter())
                 .allowedTokenEndpointRequestMethods(HttpMethod.POST, HttpMethod.GET);
-        endpoints.userDetailsService(userDetailService);
-    }
-
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
+        endpoints.userDetailsService(rpushUserDetailService);
     }
 
     @Bean

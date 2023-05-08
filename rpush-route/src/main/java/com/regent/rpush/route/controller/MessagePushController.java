@@ -64,12 +64,7 @@ public class MessagePushController implements MessageRoutePushService {
             return ApiResult.of(StatusCode.VALIDATE_FAIL, "消息推送参数错误");
         }
         String clientId;
-        if (SessionUtils.isSupperAdmin()) {
-            // 只有超级管理员可以指定client推送消息
-            clientId = json.getStr("clientId");
-        } else {
-            clientId = SessionUtils.getClientId();
-        }
+        clientId = SessionUtils.getClientId();
         messagePushDTO.setClientId(clientId);
 
         MessageType[] values = MessageType.values();
